@@ -3,24 +3,10 @@ manifest:
     # zmk official
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-      # bravekarma
-    - name: caksoylar
-      url-base: https://github.com/caksoylar
-      # kyek / duckyb
-    - name: duckyb
-      url-base: https://github.com/duckyb
-    - name: m165437
-      url-base: https://github.com/M165437
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: urchin-zmk-module
-      remote: duckyb
-      revision: main
-    - name: nice-view-gem
-      remote: m165437
-      revision: main
   self:
     path: config

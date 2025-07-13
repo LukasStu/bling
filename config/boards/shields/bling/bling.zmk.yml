@@ -4,10 +4,8 @@ name: Cradio/Sweep
 type: shield
 url: https://github.com/davidphilipbarr/Sweep
 requires: [pro_micro]
-exposes: [i2c_oled]
 features:
   - keys
-  - studio
 siblings:
   - bling_left
   - bling_right
