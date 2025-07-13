@@ -1,0 +1,30 @@
+# This file generates the GitHub Actions matrix
+# For simple board + shield combinations, add them
+# to the top level board and shield arrays, for more
+# control, add individual board + shield combinations to
+# the `include` property, e.g:
+#
+# board: [ "nice_nano_v2" ]
+# shield: [ "corne_left", "corne_right" ]
+# include:
+#   - board: bdn9_rev2
+#   - board: nice_nano_v2
+#     shield: reviung41
+#
+---
+include:
+  - board: nice_nano_v2
+    shield: urchin
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+
+  - board: nice_nano_v2
+    shield: settings_reset
+
+  - board: nice_nano_v2
+    shield: urchin_left nice_view_adapter  nice_view_gem
+    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_NICE_VIEW_GEM_ANIMATION=n
+
+  - board: nice_nano_v2
+    shield: urchin_right nice_view_adapter nice_view_gem
+    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_NICE_VIEW_GEM_ANIMATION=n

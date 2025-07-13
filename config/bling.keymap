@@ -1,0 +1,208 @@
+/*
+ * Copyright (c) 2020 duckyb
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include "keymap_german.h"
+
+// Layer definitions
+#define BASE 0
+#define EXT 1
+#define FNC 2
+#define SYM 3
+#define NUM 4
+#define SETTINGS 5
+// -----------------
+
+&sk {
+	// don't release mods on other mods presses
+	ignore-modifiers;
+};
+/ {
+	behaviors {
+		// Enables holding the first mod-tap key
+		// by performing a tap-release-hold sequence.
+		// To use it: "&qt KEYCODE1 KEYCODE2"
+		qt: quick_tap {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "hold-preferred";
+			tapping-term-ms = <200>;
+			quick-tap-ms = <200>;
+			bindings = <&kp>, <&kp>;
+		};
+		smt: sticky_mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&sk>;
+            display-name = "sticky Mod-Tap";
+        };
+	};
+
+	macros {
+		// sometimes my device thinks a modifier is being held down
+		// pressing all modifiers fixes it.
+		unstick: unstick {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&kp LSHIFT &kp RSHIFT &kp LCTRL &kp RCTRL &kp LALT &kp RALT &kp LGUI &kp RGUI>;
+		};
+	};
+
+	combos {
+		compatible = "zmk,combos";
+
+		// both left thumb keys
+		combo_settings {
+			timeout-ms = <200>;
+			key-positions = <30 31>;
+			bindings = <&mo SETTINGS>;
+		};
+
+		// outer left + outer right thumb
+		combo_fnc {
+			timeout-ms = <200>;
+			key-positions = <30 33>;
+			bindings = <&mo FNC>;
+		};
+
+		// inner left + outer right thumb
+		combo_num {
+			timeout-ms = <200>;
+			key-positions = <31 33>;
+			bindings = <&mo NUM>;
+		};
+	};
+
+	keymap {
+		compatible = "zmk,keymap";
+		// Noted Base Layer
+        // ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
+        // │ Y │ Z │ U │ A │ Q │       │ P │ B │ M │ L │ F │
+        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
+        // │ C │ S │ I │ E │ O │       │ D │ T │ N │ R │ H │
+        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
+        // │ V │ X │ Ü │ Ä │ Ö │       │ W │ G │ J │ ß │ K │
+        // └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
+        //         ┌──────┬──────┐     ┌──────┬──────┐
+        //         EXT SPC│SFT BSPC    │ENTER │SYM SPC
+        //         └──────┴──────┘     └──────┴──────┘
+		default_layer {
+			display-name = "Base Layer";
+			bindings = <
+				&kp Y   &kp Z   &kp U   &kp A   &kp Q      &kp P   &kp B   &kp M   &kp L   &kp F
+				&kp C   &kp S   &kp I   &kp E   &kp O      &kp D   &kp T   &kp N   &kp R   &kp H
+				&kp V   &kp X   &kp DE_UE &kp DE_AE &kp DE_OE  &kp W   &kp G   &kp J   &kp DE_SS   &kp K
+					     &lt EXT SPACE &qt LSHIFT BSPC       &kp ENTER &lt SYM SPACE
+			>;
+		};
+		// Extend layer
+        // ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
+        // │ 1 │ 2 │ 3 │ 4 │ 5 │       │ 6 │ 7 │ 8 │ 9 │ 0 │
+        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
+        // │ALT│WIN│SFT│CTL│ALR│       │LFT│DWN│UP │RGT│ + │
+        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
+        // │Esc│   │TAB│DEL│CAP│       │C+B│BSP│ , │ . │ - │
+        // └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
+        //         ┌─────┬─────┐       ┌─────┬─────┐
+        //         │  X  │None │       │Enter│None │
+        //         └─────┴─────┘       └─────┴─────┘
+		ext_layer {
+			display-name = "Extend Layer";
+			bindings = <
+				&kp N1 	   &kp N2   &kp N3   &kp N4    &kp N5         &kp N6        &kp N7   &kp N8      &kp N9     &kp N0
+				&smt LALT LALT  &smt LGUI LGUI &smt LSHIFT LSHIFT &smt LCTRL LCTRL &smt RALT RALT     &kp LEFT      &kp DOWN &kp UP      &kp RIGHT  &kp DE_PLUS
+				&kp ESC    &none    &kp TAB    &kp DEL   &kp CAPSLOCK   &kp LC(BSPC)  &kp BSPC &kp DE_COMM &kp DE_DOT &kp DE_MINS
+											 &none     &none     	  &kp ENTER     &none
+			>;
+		};
+		// Function layer
+        // ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
+        // │F1 │F2 │F3 │F4 │F5 │       │F6 │F7 │F8 │F9 │F10│
+        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
+        // │ALT│WIN│SFT│CTL│ALR│       │F11│F12│   │   │   │
+        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
+        // │   │   │   │   │   │       │   │   │ ; │ : │ _ │
+        // └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
+        //         ┌─────┬─────┐       ┌─────┬─────┐
+        //         │  X  │None |       │None |  X  │
+        //         └─────┴─────┘       └─────┴─────┘
+		fun_layer {
+			display-name = "Function Layer";
+			bindings = <
+				&kp F1     &kp F2   &kp F3   &kp F4   &kp F5         &kp F6   &kp F7   &kp F8   &kp F9   &kp F10
+				&sk LALT   &sk LGUI &sk LSHIFT &sk LCTRL &sk RALT      &kp F11  &kp F12  &none    &none    &none
+				&none      &none    &none    &none    &none          &none    &none    &kp DE_SCLN  &kp DE_COLN &kp DE_UNDSC
+											 &trans   &none          &none    &trans
+			>;
+		};
+		// Symbols layer
+        // ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
+        // │ ! │ " │ § │ $ │ % │       │ & │ / │ = │ ' │ \ │
+        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
+        // |ALT│WIN│SFT│CTL│ALR│       │ * │ ( │ { │ [ │ < │
+        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
+        // │ ^ │ @ │ € │ | │ # │       │ ~ │ ) │ } │ ] │ > |
+        // └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
+        //         ┌─────┬─────┐       ┌─────┬─────┐
+        //         │None │Enter│       │None │  X  │
+        //         └─────┴─────┘       └─────┴─────┘
+		sym_layer {
+			display-name = "Sym Layer";
+			bindings = <
+				&kp DE_EXCL   &kp DE_DQUOT  &kp DE_SECT   &kp DE_DOLL  &kp DE_PERC         &kp DE_AMPR   &kp DE_SLSH   &kp DE_EQL    &kp DE_APOS  &kp DE_BSLS
+				&sk LALT      &sk LGUI      &sk LSHIFT      &sk LCTRL    &sk RALT            &kp DE_ASTRK  &kp DE_LPAR   &kp DE_LCBRC  &kp DE_LBRC  &kp DE_LESS
+				&kp DE_CIRC   &kp DE_AT     &kp DE_EURO   &kp DE_PIPE  &kp DE_HASH         &kp DE_TILDE  &kp DE_RPAR   &kp DE_RCBRC  &kp DE_RBRC  &kp DE_GREAT
+									&none   &kp ENTER                                  	   &none          &trans
+			>;
+		};
+		// Numbers layer
+        // ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
+        // │   │   │   │   │   │       │   │   │   │   │   │
+        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
+        // │ 1 │ 2 │ 3 │ 4 │ 5 │       │ 6 │ 7 │ 8 │ 9 │ 0 │
+        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
+        // │   │   │   │   │   │       │   │BSP│   │   │   │
+        // └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
+        //         ┌─────┬─────┐       ┌─────┬─────┐
+        //         │None │  X  │       │None │  X  │
+        //         └─────┴─────┘       └─────┴─────┘
+		num_layer {
+			display-name = "Numbers Layer";
+			bindings = <
+			&none &none &none &none &none                &none &none &none &none &none
+			&kp N1 &kp N2 &kp N3 &kp N4 &kp N5           &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
+			&none &none &none &none &none                &none &kp BSPC &none &none &none
+							  &none &trans               &none &trans
+
+			>;
+		};
+		// Used to change the keyboard's settings.
+	    // ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
+        // │   │   │   │   │   │       │   │   │   │   │   │
+        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
+        // │   │   │   │   │   │       │   │   │   │   │   │
+        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
+        // │BL │   │   │   │   │       │   │   │   │   │SU │
+        // └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
+        //         ┌─────┬─────┐       ┌─────┬─────┐
+        //         │  X  │  X  │       │     │     │
+        //         └─────┴─────┘       └─────┴─────┘
+		settings_layer {
+				display-name = "Settings Layer";
+				bindings = <
+				&none &none &none &none &none           &none &none &none &none &none 
+				&none &none &none &none &none			&none &none &none &none &none
+				&bootloader &none &none &none &none     &none &none &none &none &studio_unlock
+										&trans &trans     &none &none 
+				>;
+		};
+	};
+};
