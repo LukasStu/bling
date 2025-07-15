@@ -3,10 +3,16 @@ manifest:
     # zmk official
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    # Dongle Display
+    - name: LukasStu
+      url-base: https://github.com/LukasStu
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
+    - name: zmk-dongle-display
+      remote: LukasStu
+      revision: main
   self:
     path: config

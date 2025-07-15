@@ -14,8 +14,8 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: bling
-  - board: nice_nano_v2
+    shield: bling dongle_display
+  - board: nice_nano_v2 
     shield: settings_reset
   - board: nice_nano_v2
     shield: bling_left
