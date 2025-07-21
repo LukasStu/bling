@@ -18,11 +18,6 @@
 #define NUM 4
 #define SETTINGS 5
 // -----------------
-
-&sk {
-	// don't release mods on other mods presses
-	ignore-modifiers;
-};
 / {
 	behaviors {
 		// Enables holding the first mod-tap key
@@ -44,16 +39,6 @@
             bindings = <&kp>, <&sk>;
             display-name = "sticky Mod-Tap";
         };
-	};
-
-	macros {
-		// sometimes my device thinks a modifier is being held down
-		// pressing all modifiers fixes it.
-		unstick: unstick {
-			compatible = "zmk,behavior-macro";
-			#binding-cells = <0>;
-			bindings = <&kp LSHIFT &kp RSHIFT &kp LCTRL &kp RCTRL &kp LALT &kp RALT &kp LGUI &kp RGUI>;
-		};
 	};
 
 	combos {
