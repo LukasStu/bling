@@ -64,6 +64,49 @@
 			key-positions = <31 33>;
 			bindings = <&mo NUM>;
 		};
+
+		        // G + J → comma (,)
+        combo_comma {
+            timeout-ms    = <200>;
+            key-positions = <26 27>;   // G=26, J=27
+            bindings      = <&kp DE_COMM>;
+        };
+
+        // J + ß → period (.)
+        combo_dot {
+            timeout-ms    = <200>;
+            key-positions = <27 28>;   // J=27, ß=28
+            bindings      = <&kp DE_DOT>;
+        };
+
+        // ß + K → minus/hyphen (-)
+        combo_dash {
+            timeout-ms    = <200>;
+            key-positions = <28 29>;   // ß=28, K=29
+            bindings      = <&kp DE_MINS>;
+        };
+
+		// T + N → semicolon (;)
+        combo_semicolon {
+            timeout-ms    = <200>;
+            key-positions = <16 17>;   // T=16, N=17
+            bindings      = <&kp DE_SCLN>;
+        };
+
+        // N + R → colon (:)
+        combo_colon {
+            timeout-ms    = <200>;
+            key-positions = <17 18>;   // N=17, R=18
+            bindings      = <&kp DE_COLN>;
+        };
+
+        // R + H → underscore (_)
+        combo_underscore {
+            timeout-ms    = <200>;
+            key-positions = <18 19>;   // R=18, H=19
+            bindings      = <&kp DE_UNDSC>;
+        };
+
 	};
 
 	keymap {
