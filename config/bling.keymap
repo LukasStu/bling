@@ -86,24 +86,24 @@
             bindings      = <&kp DE_MINS>;
         };
 
-		        // Ts + N → semicolon (;)
+		// T + N → semicolon (;)
         combo_semicolon {
             timeout-ms    = <200>;
-            key-positions = <25 24>;   // T=25, N=24
+            key-positions = <24 25>;   // N=24, T=25
             bindings      = <&kp DE_SCLN>;
         };
 
         // N + R → colon (:)
         combo_colon {
             timeout-ms    = <200>;
-            key-positions = <24 23>;   // N=24, R=23
+            key-positions = <23 24>;   // R=23, N=24
             bindings      = <&kp DE_COLN>;
         };
 
         // R + H → underscore (_)
         combo_underscore {
             timeout-ms    = <200>;
-            key-positions = <23 22>;   // R=23, H=22
+            key-positions = <22 23>;   // H=22, R=23
             bindings      = <&kp DE_UNDSC>;
         };
 
