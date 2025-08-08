@@ -59,9 +59,9 @@
 #define DE_ASTRK LS(RBKT) // *
 #define DE_APOS LS(NUHS)  // ‘ (German “Einfaches Anführungszeichen”)
 #define DE_GREAT LS(NUBS) // >
-#define DE_SCLN SEMI      // ;
-#define DE_COLN COLON     // :
-#define DE_UNDSC UNDER    // _
+#define DE_SCLN LS(COMMA) // ;
+#define DE_COLN LS(DOT)   // :
+#define DE_UNDSC LS(FSLH) // _
 
 /* AltGr (RALT) symbols
  * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
