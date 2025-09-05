@@ -15,8 +15,6 @@
 #define NAV 1
 #define SYM 2
 #define FNC 3
-#define NUM 4
-#define SETTINGS 5
 // -----------------
 / {
 	behaviors {
@@ -48,7 +46,7 @@
 		combo_settings {
 			timeout-ms = <200>;
 			key-positions = <30 31>;
-			bindings = <&mo SETTINGS>;
+			bindings = <&none>;
 		};
 
 		// outer left + outer right thumb
@@ -62,7 +60,7 @@
 		combo_num {
 			timeout-ms = <200>;
 			key-positions = <31 33>;
-			bindings = <&mo NUM>;
+			bindings = <&none>;
 		};
 
 		        // G + J → comma (,)
@@ -190,47 +188,6 @@
 				&none      &none    &none    &none    &none          &none    &none    &kp DE_SCLN  &kp DE_COLN &kp DE_UNDSC
 											 &trans   &none          &none    &trans
 			>;
-		};
-		// Numbers layer
-        // ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
-        // │   │   │   │   │   │       │   │   │   │   │   │
-        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-        // │ 1 │ 2 │ 3 │ 4 │ 5 │       │ 6 │ 7 │ 8 │ 9 │ 0 │
-        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-        // │   │   │   │   │   │       │   │BSP│   │   │   │
-        // └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
-        //         ┌─────┬─────┐       ┌─────┬─────┐
-        //         │None │  X  │       │None │  X  │
-        //         └─────┴─────┘       └─────┴─────┘
-		num_layer {
-			display-name = "Num";
-			bindings = <
-			&none &none &none &none &none                &none &none &none &none &none
-			&kp N1 &kp N2 &kp N3 &kp N4 &kp N5           &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
-			&none &none &none &none &none                &none &kp BSPC &none &none &none
-							  &none &trans               &none &trans
-
-			>;
-		};
-		// Used to change the keyboard's settings.
-	    // ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
-        // │   │   │   │   │   │       │   │   │   │   │   │
-        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-        // │   │   │   │   │   │       │   │   │   │   │   │
-        // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-        // │BL │   │   │   │   │       │   │   │   │   │SU │
-        // └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
-        //         ┌─────┬─────┐       ┌─────┬─────┐
-        //         │  X  │  X  │       │     │     │
-        //         └─────┴─────┘       └─────┴─────┘
-		settings_layer {
-				display-name = "Sett'gs";
-				bindings = <
-				&none &none &none &none &none           &none &none &none &none &none 
-				&none &none &none &none &none			&none &none &none &none &none
-				&bootloader &none &none &none &none     &none &none &none &none &studio_unlock
-										&trans &trans     &none &none 
-				>;
 		};
 	};
 };
