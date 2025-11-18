@@ -32,20 +32,20 @@
     };
 };
 
-&pro_micro_i2c {
-    status = "okay";
-    oled: ssd1306@3c {
-        compatible = "solomon,ssd1306fb";
-        reg = <0x3c>;
-        width = <128>;
-        height = <64>;
-        segment-offset = <0>;
-        page-offset = <0>;
-        display-offset = <0>;
-        multiplex-ratio = <63>;
-        segment-remap;
-        com-invdir;
-        inversion-on;
-        prechargep = <0x22>;
-    };  
-};
+ &pro_micro_i2c {
+     status = "okay";
+     oled: sh1106@3c {
+         compatible = "sinowealth,sh1106";
+         reg = <0x3c>;
+         width = <129>;
+         height = <64>;
+         segment-offset = <1>;
+         page-offset = <0>;
+         display-offset = <0>;
+         multiplex-ratio = <63>;
+         segment-remap;
+         com-invdir;
+         inversion-on;
+         prechargep = <0x22>;
+         };
+}; 
