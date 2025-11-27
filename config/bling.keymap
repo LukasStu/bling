@@ -49,13 +49,6 @@
 			bindings = <&none>;
 		};
 
-		// outer left + outer right thumb
-		combo_fnc {
-			timeout-ms = <200>;
-			key-positions = <30 33>;
-			bindings = <&mo FNC>;
-		};
-
 		// inner left + outer right thumb
 		combo_num {
 			timeout-ms = <200>;
@@ -86,7 +79,7 @@
 
 		// T + N → semicolon (;)
         combo_semicolon {
-            timeout-ms    = <200>;
+            timeout-ms    = <100>;
             key-positions = <16 17>;   // T=16, N=17
             bindings      = <&kp DE_SCLN>;
         };
@@ -106,6 +99,15 @@
         };
 
 	};
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        num_sym_to_fnc {
+            if-layers = <NAV SYM>;
+            then-layer = <FNC>;
+        };
+    };
+
 
 	keymap {
 		compatible = "zmk,keymap";
@@ -138,7 +140,7 @@
         // │Esc│   │TAB│DEL│CAP│       │C+B│BSP│ , │ . │ - │
         // └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
         //         ┌─────┬─────┐       ┌─────┬─────┐
-        //         │  X  │None │       │Enter│None │
+        //         │  X  │None │       │Enter│trans│
         //         └─────┴─────┘       └─────┴─────┘
 		nav_layer {
 			display-name = "NavNum";
@@ -146,7 +148,7 @@
 				&kp N1 	   &kp N2   &kp N3   &kp N4    &kp N5         &kp N6        &kp N7   &kp N8      &kp N9     &kp N0
 				&smt LALT LALT  &smt LGUI LGUI &smt LSHIFT LSHIFT &smt LCTRL LCTRL &smt RALT RALT     &kp LEFT      &kp DOWN &kp UP      &kp RIGHT  &kp DE_PLUS
 				&kp ESC    &none    &kp TAB    &kp DEL   &kp CAPSLOCK   &kp LC(BSPC)  &kp BSPC &kp DE_COMM &kp DE_DOT &kp DE_MINS
-											 &none     &none     	  &kp ENTER     &none
+											 &trans     &none     	  &kp ENTER     &trans
 			>;
 		};
 		// Symbols layer
@@ -158,7 +160,7 @@
         // │ ^ │ @ │ € │ | │ # │       │ ~ │ ) │ } │ ] │ > |
         // └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
         //         ┌─────┬─────┐       ┌─────┬─────┐
-        //         │None │Enter│       │None │  X  │
+        //         │trans│Enter│       │None │  X  │
         //         └─────┴─────┘       └─────┴─────┘
 		sym_layer {
 			display-name = "Symbl";
@@ -166,7 +168,7 @@
 				&kp DE_EXCL   &kp DE_DQUOT  &kp DE_SECT   &kp DE_DOLL  &kp DE_PERC         &kp DE_AMPR   &kp DE_SLSH   &kp DE_EQL    &kp DE_APOS  &kp DE_BSLS
 				&sk LALT      &sk LGUI      &sk LSHIFT      &sk LCTRL    &sk RALT            &kp DE_ASTRK  &kp DE_LPAR   &kp DE_LCBRC  &kp DE_LBRC  &kp DE_LESS
 				&kp DE_CIRC   &kp DE_AT     &kp DE_EURO   &kp DE_PIPE  &kp DE_HASH         &kp DE_TILDE  &kp DE_RPAR   &kp DE_RCBRC  &kp DE_RBRC  &kp DE_GREAT
-									&none   &kp ENTER                                  	   &none          &trans
+									&trans   &kp ENTER                                  	   &none          &trans
 			>;
 		};
 		// Function layer
