@@ -187,7 +187,7 @@
 			bindings = <
 				&kp F1     &kp F2   &kp F3   &kp F4   &kp F5         &kp F6   &kp F7   &kp F8   &kp F9   &kp F10
 				&sk LALT   &sk LGUI &sk LSHIFT &sk LCTRL &sk RALT    &kp LG(LS(LEFT))   &kp LG(LS(DOWN))   &kp LG(LS(UP))   &kp LG(LS(RIGHT))    &none
-				&kp F11  &kp F12    &none    &none    &none          &kp LG(LEFT)  &kp LG(DOWN)  &kp LG(UP)    &kp LG(RIGHT) &none
+				&kp F11  &kp F12    &none    &none    &key_repeat    &kp LG(LEFT)  &kp LG(DOWN)  &kp LG(UP)    &kp LG(RIGHT) &kp LS(F10)
 											 &trans   &none          &none    &trans
 			>;
 		};
