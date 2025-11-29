@@ -175,9 +175,9 @@
         // ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
         // │F1 │F2 │F3 │F4 │F5 │       │F6 │F7 │F8 │F9 │F10│
         // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-        // │ALT│WIN│SFT│CTL│ALR│       │F11│F12│   │   │   │
+        // │ALT│WIN│SFT│CTL│ALR│       │WSL│WSD│WSU│WSR│   │
         // ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-        // │   │   │   │   │   │       │   │   │ ; │ : │ _ │
+        // │F11│F12│   │   │   │       │   │   │   │   │   │
         // └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
         //         ┌─────┬─────┐       ┌─────┬─────┐
         //         │  X  │None |       │None |  X  │
@@ -186,8 +186,8 @@
 			display-name = "Funcs";
 			bindings = <
 				&kp F1     &kp F2   &kp F3   &kp F4   &kp F5         &kp F6   &kp F7   &kp F8   &kp F9   &kp F10
-				&sk LALT   &sk LGUI &sk LSHIFT &sk LCTRL &sk RALT      &kp F11  &kp F12  &none    &none    &none
-				&none      &none    &none    &none    &none          &none    &none    &kp DE_SCLN  &kp DE_COLN &kp DE_UNDSC
+				&sk LALT   &sk LGUI &sk LSHIFT &sk LCTRL &sk RALT    &kp LG(LS(LEFT))   &kp LG(LS(DOWN))   &kp LG(LS(UP))   &kp LG(LS(RIGHT))    &none
+				&kp F11  &kp F12    &none    &none    &none          &none    &none    &none   &none   &none
 											 &trans   &none          &none    &trans
 			>;
 		};
