@@ -13,13 +13,13 @@
 #
 ---
 include:
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: bling dongle_display
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: settings_reset
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: bling_left
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: bling_right
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
