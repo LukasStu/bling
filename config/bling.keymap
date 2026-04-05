@@ -168,7 +168,7 @@
 				&kp DE_EXCL   &kp DE_DQUOT  &kp DE_SECT   &kp DE_DOLL  &kp DE_PERC         &kp DE_AMPR   &kp DE_SLSH   &kp DE_EQL    &kp DE_APOS  &kp DE_BSLS
 				&sk LALT      &sk LGUI      &sk LSHIFT      &sk LCTRL    &sk RALT            &kp DE_ASTRK  &kp DE_LPAR   &kp DE_LCBRC  &kp DE_LBRC  &kp DE_LESS
 				&kp DE_CIRC   &kp DE_AT     &kp DE_EURO   &kp DE_PIPE  &kp DE_HASH         &kp DE_TILDE  &kp DE_RPAR   &kp DE_RCBRC  &kp DE_RBRC  &kp DE_GREAT
-									&trans   &kp trans                                  	   &trans          &trans
+									&trans   &trans                                  	   &trans          &trans
 			>;
 		};
 		// Function layer
